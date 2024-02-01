@@ -1,0 +1,38 @@
+<div class="board-container">
+  @for (row of btns; let i = $index; track i) {
+    <div class="row">
+      @for (value of row; let j = $index; track j) {
+        <button (click)="makeMove(i, j)"
+          class="button"
+        >
+          {{value}}
+        </button>
+      }
+    </div>
+  }
+  
+  @if (winner || winner === "Tie") {
+    <div class="winner">
+      <h2 class="showWinner">
+        {{ (winner === "Tie") ? winner + '!' : winner + ' Win!' }}
+      </h2>
+      <button (click)="restart()" class="restartButton">
+        Restart
+      </button>
+    </div>
+  }
+</div>
+
+
+<!-- <div class="board-container">
+  <div class="row" @for="let row of btns; let i = index">
+    <button @for="let value of row; let j = index" (click)="makeMove(i, j)">{{value}}</button>
+  </div>
+</div>
+
+<div @if="winner">
+  <h2>
+    {{ winner }} wins!
+  </h2>
+</div> -->
+
